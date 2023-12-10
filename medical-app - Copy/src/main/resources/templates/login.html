@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .form-signin {
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 80px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-signin input {
+            margin-bottom: 10px;
+        }
+
+        .form-signin label {
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-signin button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .form-signin a {
+            display:block;
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body style="background-color: bisque;">
+	<div th:include="navbar.html"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<form th:action="@{/login}" method="POST" class="form-signin">
+                    <h3 class="mb-4" th:text="Welcome"></h3>
+					<label>Username:</label>
+					<input type="text" name="email" id="email" th:placeholder="Email" class="form-control"></br>
+					<label>Password:</label>
+					<input type="password" name="password" id="password" th:placeholder="Password" class="form-control"></br>
+					<br>
+
+					<div th:if="${param.error}">
+						<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>	
+					</div>
+					<button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+					<br>
+					
+					<a th:href="@{/registration}" class="sign-up-link" th:text="SignUp"></a>
+
+
+				</form><br>
+
+			</div>
+		</div>
+	</div>	
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>	
+</body>
+</html>

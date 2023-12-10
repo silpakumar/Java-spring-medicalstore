@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Medicine Details</title>
+</head>
+<body>
+	<h1>Medicine details</h1>
+	<b>Name:</b>
+	<p th:text=${medicinedetails.Mname}></p>
+	<br>
+	<b>Description:</b>
+	<p th:text="${userdetails.description}"></p>
+	<br>
+	<b>Price:</b>
+	<p th:text="${userdetails.price}"></p>
+	<b>Exp Date:</b>
+	<p th:text="${userdetails.expdate}"></p>
+</body>
+</html>

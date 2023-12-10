@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Medicines</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .scrollable-table-container {
+            max-height: 400px; 
+            overflow-y: auto;  
+            background-color: aliceblue;
+        }
+
+        table {
+            border: 1px solid #ddd; 
+            border-collapse: collapse; 
+            width: 100%; 
+        }
+
+        th, td {
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left;
+        }
+
+    </style>    
+</head>
+<body style="background-color: bisque;">
+    <div th:include="navbar.html"></div>
+    
+  <div>
+    <div class="container mt-4">
+        <h1 style="text-align: center;">All Medicines</h1>
+        
+        <div class="scrollable-table-container">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Expired Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="medicine : ${medicines}">
+                        <td th:text="${medicine.id}"></td>
+                        <td th:text="${medicine.mname}"></td>
+                        <td th:text="${medicine.description}"></td>
+                        <td th:text="${medicine.price}"></td>
+                        <td th:text="${medicine.expdate}"></td>
+                        <td><a th:href="@{/update/{id}(id=${medicine.id})}" class="btn btn-warning">Edit</a></td>
+                        <td><a th:href="@{/delete/{id}(id=${medicine.id})}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+   </div> 
+</body>
+</html>

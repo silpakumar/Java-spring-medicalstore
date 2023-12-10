@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">	
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .reg {
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 80px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .reg input {
+            margin-bottom: 10px;
+        }
+
+        .reg label {
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .reg button {
+            background-color: #007bff;
+            color: #fff;
+        }
+         .sign-up-link {
+            display:block;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body style="background-color: bisque;">
+<div th:include="navbar.html"></div>    
+ <div class="container">
+    <div class="row">
+       <div class="col-md-12">
+
+<form th:action="@{/registration}" th:object="${user}" method="post" class="reg">
+    <h2>Registration Form</h2>
+
+    <label>Name:</label>
+    <div>
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></p>
+        <input type="text" th:field="*{name}" placeholder="Enter your name" class="form-control" />
+    </div>
+
+    <label>Last Name:</label>
+    <div>
+        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
+        <input type="text" th:field="*{lastName}" placeholder="Enter your last name" class="form-control"/>
+    </div>
+
+    <label>Email:</label>
+    <div>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
+        <input type="text" th:field="*{email}" placeholder="Enter your email" class="form-control"/>
+    </div>
+
+    <label>Password:</label>
+    <div>
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></p>
+        <input type="password" th:field="*{password}" placeholder="Enter your password" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm btn-block mx-auto" style="width: 150px;">Register User</button>
+    <br>
+    <a th:href="@{/login}" class="sign-up-link" th:text="Login"></a>
+</form>
+
+
+        </div>
+    </div>
+</div>
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>    
+
+
+</body>
+</html>
